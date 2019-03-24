@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeloDatabaseSwitcher"
         mc:Ignorable="d"
-        Title="Delo Database Switcher" Height="450" Width="800">
+        Title="Delo Database Switcher" Height="160" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="Height">
     <Grid>
-        
+        <StackPanel Margin="10">
+            <DockPanel>
+                <Button x:Name="SelectButton" Width="100" Click="SelectButton_Click">Select OFFICE.INI</Button>
+                <TextBlock x:Name="PathLabel" Margin="5 0 0 0"></TextBlock>
+            </DockPanel>
+            <DockPanel Margin="0 5 0 0">
+                <TextBlock Width="100">Server</TextBlock>
+                <TextBox x:Name="ServerBox" MaxLength="32">localhost</TextBox>
+            </DockPanel>
+            <DockPanel Margin="0 5 0 5">
+                <TextBlock Width="100">Database</TextBlock>
+                <TextBox x:Name="DatabaseBox" MaxLength="32">N1807W</TextBox>
+            </DockPanel>
+            <DockPanel Margin="0 5 0 5" HorizontalAlignment="Right">
+                <Button x:Name="SaveButton" Width="70" Click="SaveButton_Click">Save</Button>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock TextAlignment="Center" FontSize="9" FontStyle="Italic" Cursor="Hand" MouseDown="GithubLink_MouseDown" Foreground="Blue">https://github.com/Emestie/DeloDatabaseSwitcher</TextBlock>
+            </DockPanel>
+        </StackPanel>
     </Grid>
 </Window>
