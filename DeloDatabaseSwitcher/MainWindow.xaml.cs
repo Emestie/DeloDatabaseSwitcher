@@ -22,12 +22,11 @@ namespace DeloDatabaseSwitcher
         private void LoadSettingsAndData()
         {
             var path = AppSettings.Default.officepath;
-            if (path != null)
+            if (path != null && path != "")
             {
                 Path = path;
+                LoadAndParseIniFile();
             }
-
-            LoadAndParseIniFile();
         }
 
         private void LoadAndParseIniFile()
