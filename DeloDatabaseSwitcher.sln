@@ -5,16 +5,28 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeloDatabaseSwitcher", "DeloDatabaseSwitcher\DeloDatabaseSwitcher.csproj", "{3391C6F1-3CAB-46C1-8266-6552264CB726}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{FB7BA192-4E80-43F6-84AE-BF6CEE3C4934}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3391C6F1-3CAB-46C1-8266-6552264CB726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3391C6F1-3CAB-46C1-8266-6552264CB726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3391C6F1-3CAB-46C1-8266-6552264CB726}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3391C6F1-3CAB-46C1-8266-6552264CB726}.Debug|x86.Build.0 = Debug|Any CPU
 		{3391C6F1-3CAB-46C1-8266-6552264CB726}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3391C6F1-3CAB-46C1-8266-6552264CB726}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3391C6F1-3CAB-46C1-8266-6552264CB726}.Release|x86.ActiveCfg = Release|Any CPU
+		{3391C6F1-3CAB-46C1-8266-6552264CB726}.Release|x86.Build.0 = Release|Any CPU
+		{FB7BA192-4E80-43F6-84AE-BF6CEE3C4934}.Debug|Any CPU.ActiveCfg = Debug
+		{FB7BA192-4E80-43F6-84AE-BF6CEE3C4934}.Debug|x86.ActiveCfg = Debug
+		{FB7BA192-4E80-43F6-84AE-BF6CEE3C4934}.Release|Any CPU.ActiveCfg = Release
+		{FB7BA192-4E80-43F6-84AE-BF6CEE3C4934}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

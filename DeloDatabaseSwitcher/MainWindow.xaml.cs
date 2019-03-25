@@ -45,7 +45,7 @@ namespace DeloDatabaseSwitcher
                 AppSettings.Default.Save();
                 PathLabel.Text = Path ?? "(file not selected)";
             }
-            catch (Exception e)
+            catch
             {
                 MessageBox.Show("Cannot open selected file. Try to open another one.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -87,7 +87,7 @@ namespace DeloDatabaseSwitcher
                     parser.WriteFile(Path, data);
                     SaveOkBox.Visibility = Visibility.Visible;
                 }
-                catch (Exception ex)
+                catch 
                 {
                     MessageBox.Show("Cannot save file.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }

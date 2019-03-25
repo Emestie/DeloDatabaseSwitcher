@@ -1,1 +1,0 @@
-Compress-Archive .\DeloDatabaseSwitcher\bin\Release\DeloDatabaseSwitcher.exe .\dist\delodatabaseswitcher-latest.zip
