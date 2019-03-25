@@ -1,16 +1,17 @@
-﻿using System.Windows;
+﻿using IniParser;
+using IniParser.Model;
+using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace DeloDatabaseSwitcher
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public string Path { get; set; }
-        public string Server { get; set; }
-        public string Database { get; set; }
+
+        private FileIniDataParser parser;
+        private IniData data;
 
         public MainWindow()
         {
@@ -24,10 +25,35 @@ namespace DeloDatabaseSwitcher
             if (path != null)
             {
                 Path = path;
-                PathLabel.Text = Path;
             }
 
-            //load ini and parse it
+            LoadAndParseIniFile();
+        }
+
+        private void LoadAndParseIniFile()
+        {
+            try
+            {
+                parser = new FileIniDataParser();
+                data = parser.ReadFile(Path);
+
+                ServerBox.Text = data["Database"]["ServerName"];
+                DatabaseBox.Text = data["Database"]["Owner"];
+                UsernameBox.Text = data["Database"]["LogId"];
+                PwdBox.Text = data["Database"]["LogPassword"];
+
+                AppSettings.Default.officepath = Path;
+                AppSettings.Default.Save();
+                PathLabel.Text = Path ?? "(file not selected)";
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Cannot open selected file. Try to open another one.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                PathLabel.Text = Path ?? "(file not selected)";
+            }
         }
 
         private void GithubLink_MouseDown(object sender, MouseButtonEventArgs e)
@@ -38,13 +64,35 @@ namespace DeloDatabaseSwitcher
         private void SelectButton_Click(object sender, RoutedEventArgs e)
         {
             //save new path and reload ini and parse it
+
+            Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
+            ofd.DefaultExt = ".ini";
+            ofd.Filter = "OFFICE.INI|OFFICE.INI";
+            if (ofd.ShowDialog() == true)
+            {
+                Path = ofd.FileName;
+                LoadAndParseIniFile();
+            }
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Server = ServerBox.Text;
-            Database = DatabaseBox.Text;
-            //save ini here
+            if (Path != null)
+            {
+                data["Database"]["ServerName"] = ServerBox.Text;
+                data["Database"]["Owner"] = DatabaseBox.Text;
+                data["Database"]["LogId"] = UsernameBox.Text;
+                data["Database"]["LogPassword"] = PwdBox.Text;
+                try
+                {
+                    parser.WriteFile(Path, data);
+                    SaveOkBox.Visibility = Visibility.Visible;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Cannot save file.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
     }
 }
